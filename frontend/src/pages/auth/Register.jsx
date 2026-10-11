@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import API_BASE from '../../config/api.js'
-import './App.css'
+
 
 export default function Register(){
   const [name,setName] = useState('')

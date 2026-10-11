@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import API_BASE from '../config/api.js'
-import { useAuth } from '../AuthContext.jsx'
+import API_BASE from "../../config/api.js";
+import { useAuth } from "../../context/AuthContext.jsx";
 
 export default function AdminReviews() {
   const { fetchWithAuth } = useAuth()

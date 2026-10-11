@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../AuthContext.jsx'
-import API_BASE from '../config/api.js'
-import './AdminPanel.css'
+import API_BASE from "../../config/api.js";
+import { useAuth } from "../../context/AuthContext.jsx";
+import "../styles/AdminPanel.css";
 
 export default function AdminLogin() {
   const [email, setEmail] = useState('')
