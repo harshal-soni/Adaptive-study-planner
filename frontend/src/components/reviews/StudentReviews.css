@@ -1,0 +1,270 @@
+.reviews-section {
+  padding: 48px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.reviews-section::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.08), transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.reviews-section .section-title {
+  text-align: center;
+  margin: 0 0 8px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #7C3AED, #06B6D4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.reviews-subtitle {
+  text-align: center;
+  color: var(--muted);
+  margin: 0 0 32px;
+  font-size: 0.95rem;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.review-card {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(6, 182, 212, 0.03));
+  border: 1px solid rgba(124, 58, 237, 0.18);
+  padding: 24px;
+  border-radius: 16px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  animation: cardEntrance 0.6s ease-out forwards;
+  opacity: 0;
+}
+.review-card:active{
+  transform:scale(0.98);
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.review-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.1), transparent);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.review-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(124, 58, 237, 0.35);
+  box-shadow: 
+    0 16px 48px rgba(124, 58, 237, 0.15),
+    0 0 32px rgba(6, 182, 212, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(6, 182, 212, 0.06));
+}
+
+.review-card:hover::before {
+  left: 100%;
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  border: 2px solid;
+  transition: all 0.3s ease;
+}
+
+.review-card:hover .avatar {
+  transform: scale(1.08);
+  box-shadow: 0 0 24px currentColor;
+}
+
+.avatar-purple {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(124, 58, 237, 0.12));
+  color: #a78bfa;
+  border-color: rgba(124, 58, 237, 0.4);
+}
+
+.avatar-cyan {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(6, 182, 212, 0.12));
+  color: #22d3ee;
+  border-color: rgba(6, 182, 212, 0.4);
+}
+
+.reviewer-info {
+  flex: 1;
+}
+
+.reviewer-name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e6eef8;
+  line-height: 1.2;
+}
+
+.reviewer-course {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.2;
+}
+
+.review-content {
+  margin-bottom: 18px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.review-text {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.review-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+}
+
+.star {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.star.filled {
+  color: #fbbf24;
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+}
+
+/* Responsive Layout */
+@media (max-width: 767px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reviews-section .section-title {
+    font-size: 1.5rem;
+  }
+
+  .review-card {
+    padding: 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .reviews-section {
+    padding: 36px 0;
+  }
+
+  .reviews-section .section-title {
+    font-size: 1.3rem;
+  }
+
+  .reviews-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 24px;
+  }
+
+  .reviews-grid {
+    gap: 16px;
+  }
+
+  .review-card {
+    padding: 16px;
+  }
+
+  .review-header {
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 0.95rem;
+  }
+
+  .reviewer-name {
+    font-size: 0.95rem;
+  }
+
+  .reviewer-course {
+    font-size: 0.8rem;
+  }
+
+  .review-text {
+    font-size: 0.9rem;
+  }
+
+  .review-content {
+    min-height: 50px;
+    margin-bottom: 14px;
+  }
+
+  .star {
+    font-size: 1rem;
+  }
+}
